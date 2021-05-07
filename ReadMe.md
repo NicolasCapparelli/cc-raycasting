@@ -13,7 +13,6 @@ by simply moving the mouse around in the canvas.
 
 I've added a range slider to change the number of rays casted from the light source
 
-![alt text](readme-images/360_rays.png "360 Rays")
+![alt text](readme-images/raycast.gif "360 Rays")
 
-![alt text](readme-images/72_rays.png "72 Rays")
 
