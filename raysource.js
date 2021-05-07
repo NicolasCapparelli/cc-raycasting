@@ -3,11 +3,15 @@ class RaySource {
         this.ctx = ctx;
         this.position = ctx.createVector(x, y);
         this.rays = [];
-        this.numRays = 1;
+        this.setRays(1);
+    }
 
-        // Create one ray for every 10 degrees around this.pos
-        for (let angle = 0; angle < 360; angle += this.numRays) {
-            this.rays.push(new Ray(ctx, this.position, ctx.radians(angle)));
+    setRays(drawRayAtEveryAngle) {
+        this.rays = [];
+
+        // Create one ray for every drawRayAtEveryAngle degrees around this.position
+        for (let angle = 0; angle < 360; angle += drawRayAtEveryAngle) {
+            this.rays.push(new Ray(this.ctx, this.position, this.ctx.radians(angle)));
         }
     }
 

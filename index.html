@@ -4,12 +4,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <style>
 </style>
 <body>
   <div id="content-wrapper">
-    <main></main>
+    <div class="section">
+      <h2 class="section-title">2D Raycasting With Variable Rays</h2>
+      <p class="section-desc">Adjust the slider to change the value of x-offset to see how it affects Perlin Noise</p>
+      <main id="2d-raycasting"></main>
+      <input type="range" min="-10" max="-1" value="-1" class="section-input" id="ray-value-range">
+      <span>Rays: <span id="ray-value">360</span></span>
+    </div>
   </div>
 </body>
 <script src="raysource.js"></script>

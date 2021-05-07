@@ -1,8 +1,57 @@
 * {
     font-family: 'Open Sans', sans-serif;
     color: white;
+    box-sizing: border-box;
 }
 
 body {
     background: #1f1e1e;
+}
+
+#content-wrapper {
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+/* Section */
+
+.section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px 32px;
+    min-width: 400px;
+}
+
+.section-title {
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+}
+
+.section-desc {
+    margin-bottom: 1rem;
+    margin-right: auto;
+}
+
+.section-input {
+    margin: 2rem 0;
+}
+
+@media only screen and (max-width: 600px) {
+
+    #content-wrapper {
+        width: 100%;
+    }
+
+    .section {
+        width: 100%;
+    }
 }

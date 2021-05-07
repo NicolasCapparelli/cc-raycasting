@@ -1,6 +1,11 @@
 let sketch = function (context) {
+    context.numRays = 10;
     context.walls = [];
     context.raySource;
+
+    context.updateNumRay = function (numRays) {
+        context.raySource.setRays(numRays);
+    }
 
     context.setup = function () {
         context.createCanvas(400, 400);
@@ -37,5 +42,16 @@ let sketch = function (context) {
     }
 }
 
-let raycastingTwoD = new p5(sketch);
+const raySlider = document.getElementById("ray-value-range");
+const rayValueText = document.getElementById("ray-value");
+const raycastingTwoDCanvas = document.getElementById('2d-raycasting');
+
+let raycastingTwoD = new p5(sketch, raycastingTwoDCanvas);
+
+raySlider.oninput = function () {
+
+    let newRayValue = Math.abs(raySlider.value);
+    raycastingTwoD.updateNumRay(newRayValue);
+    rayValueText.innerText = (360 / newRayValue).toString();
+}
 
