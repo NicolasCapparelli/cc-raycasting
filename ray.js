@@ -1,5 +1,6 @@
 class Ray {
-    constructor(position, angle) {
+    constructor(ctx, position, angle) {
+        this.ctx = ctx;
         this.position = position;
 
         // Creates a vector pointing in the direction of an angle
@@ -7,12 +8,12 @@ class Ray {
     }
 
     show() {
-        stroke(255);
+        this.ctx.stroke(255);
 
-        push()
-        translate(this.position.x, this.position.y);
-        line(0, 0, this.direction.x * 10, this.direction.y * 10);
-        pop()
+        this.ctx.push()
+        this.ctx.translate(this.position.x, this.position.y);
+        this.ctx.line(0, 0, this.direction.x * 10, this.direction.y * 10);
+        this.ctx.pop()
     }
 
     setDirection(x,y) {
@@ -58,7 +59,7 @@ class Ray {
         if (t > 0 && t < 1 && u > 0) {
 
             // Since point exists, calculate and return it
-            const intersectionPoint = createVector();
+            const intersectionPoint = this.ctx.createVector();
             intersectionPoint.x = x1 + t * (x2 - x1);
             intersectionPoint.y = y1 + t * (y2 - y1);
 

@@ -1,12 +1,13 @@
 class Boundary {
-    constructor(x1, y1, x2, y2) {
-        this.a = createVector(x1, y1);
-        this.b = createVector(x2, y2);
+    constructor(p, x1, y1, x2, y2) {
+        this.p = p;
+        this.a = p.createVector(x1, y1);
+        this.b = p.createVector(x2, y2);
     }
 
     show() {
-        stroke(255);
-        line(this.a.x, this.a.y, this.b.x, this.b.y);
+        this.p.stroke(255);
+        this.p.line(this.a.x, this.a.y, this.b.x, this.b.y);
     }
 
 }

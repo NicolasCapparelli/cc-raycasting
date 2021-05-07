@@ -1,12 +1,13 @@
 class RaySource {
-    constructor(x, y) {
-        this.position = createVector(x, y);
+    constructor(ctx, x, y) {
+        this.ctx = ctx;
+        this.position = ctx.createVector(x, y);
         this.rays = [];
         this.numRays = 1;
 
         // Create one ray for every 10 degrees around this.pos
         for (let angle = 0; angle < 360; angle += this.numRays) {
-            this.rays.push(new Ray(this.position, radians(angle)));
+            this.rays.push(new Ray(ctx, this.position, ctx.radians(angle)));
         }
     }
 
@@ -15,8 +16,8 @@ class RaySource {
     }
 
     show() {
-        fill(255);
-        ellipse(this.position.x, this.position.y, 8);
+        this.ctx.fill(255);
+        this.ctx.ellipse(this.position.x, this.position.y, 8);
         for (let ray of this.rays) {
             ray.show();
         }
@@ -40,8 +41,8 @@ class RaySource {
             }
 
             if (closestMeetingPoint) {
-                stroke(255, 100);
-                line(this.position.x, this.position.y, closestMeetingPoint.x, closestMeetingPoint.y);
+                this.ctx.stroke(255, 100);
+                this.ctx.line(this.position.x, this.position.y, closestMeetingPoint.x, closestMeetingPoint.y);
             }
         }
 

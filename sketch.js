@@ -1,36 +1,41 @@
+let sketch = function (context) {
+    context.walls = [];
+    context.raySource;
 
-let walls = [];
-let raySource;
-function setup() {
-    createCanvas(400, 400);
+    context.setup = function () {
+        context.createCanvas(400, 400);
 
-    //  Boundaries on all edges of the canvas
-    walls.push(new Boundary(0, 0, width, 0));
-    walls.push(new Boundary(width, 0, width, height));
-    walls.push(new Boundary(width, height, 0, height));
-    walls.push(new Boundary(0, height, 0, 0));
+        //  Boundaries on all edges of the canvas
+        context.walls.push(new Boundary(context, 0, 0, context.width, 0));
+        context.walls.push(new Boundary(context, context.width, 0, context.width, context.height));
+        context.walls.push(new Boundary(context, context.width, context.height, 0, context.height));
+        context.walls.push(new Boundary(context,0, context.height, 0, 0));
 
-    for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 5; i++) {
 
-        let x1 = random(width);
-        let y1 = random(height);
+            let x1 = context.random(context.width);
+            let y1 = context.random(context.height);
 
-        let x2 = random(width);
-        let y2 = random(height);
-        walls.push(new Boundary(x1, y1, x2, y2));
+            let x2 = context.random(context.width);
+            let y2 = context.random(context.height);
+            context.walls.push(new Boundary(context, x1, y1, x2, y2));
+        }
+
+        context.raySource = new RaySource(context, 100, 200);
     }
 
-    raySource = new RaySource(100, 200);
-}
+    context.draw = function () {
+        context.background(51);
+        for (let wall of context.walls) {
+            wall.show();
+        }
 
-function draw() {
-    background(51);
-    for (let wall of walls) {
-        wall.show();
+
+        context.raySource.update(context.mouseX, context.mouseY);
+        context.raySource.show();
+        context.raySource.cast(context.walls);
     }
-
-
-    raySource.update(mouseX, mouseY);
-    raySource.show();
-    raySource.cast(walls);
 }
+
+let raycastingTwoD = new p5(sketch);
+
