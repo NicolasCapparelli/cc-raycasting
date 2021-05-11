@@ -18,10 +18,23 @@
       <input type="range" min="-10" max="-1" value="-1" class="section-input" id="ray-value-range">
       <span>Rays: <span id="ray-value">360</span></span>
     </div>
+
+    <div class="section">
+      <h2 class="section-title">2D Raycasting With 3D Scene Rendering</h2>
+      <p class="section-desc">
+        Using data from 2D Raycasting, we can create a 3D scene by taking the distance of each
+        intersecting ray and using it as a grayscale value to paint one column of the canvas on the right side.
+        By mapping that value to a height range, we can create the illusion of distance.
+      </p>
+      <main id="3d-raycasting"></main>
+    </div>
   </div>
 </body>
-<script src="raysource.js"></script>
-<script src="ray.js"></script>
-<script src="boundary.js"></script>
-<script src="sketch.js"></script>
+<script src="2d/raysource.js"></script>
+<script src="2d/ray.js"></script>
+<script src="2d/boundary.js"></script>
+<script src="2d/2d-raycast.js"></script>
+
+<script src="3d/3d-raycast.js"></script>
+<script src="3d/3d-raysource.js"></script>
 </html>
